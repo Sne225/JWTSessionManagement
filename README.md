@@ -1,1 +1,1 @@
-# JWTSessionManagement
+# JWT Session Management Application
