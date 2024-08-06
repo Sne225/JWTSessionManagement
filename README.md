@@ -1,4 +1,4 @@
-# HavasProject
+# Havas Project
 
 A new Flutter project.
 
