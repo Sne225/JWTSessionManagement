@@ -164,13 +164,13 @@ class _HomeWidgetState extends State<HomeWidget> {
                         children: [
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 0.0, 0.0),
+                                26.0, 0.0, 0.0, 0.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
                               child: Image.network(
                                 'https://images.unsplash.com/photo-1605648916361-9bc12ad6a569?w=800&h=800',
-                                width: 120.0,
-                                height: 120.0,
+                                width: 100.0,
+                                height: 100.0,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -178,7 +178,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 0.0, 12.0),
+                                  12.0, 30.0, 0.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -190,6 +190,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         .titleMedium
                                         .override(
                                           fontFamily: 'Inter',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           letterSpacing: 0.0,
                                         ),
                                   ),
@@ -249,17 +251,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Row(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 0.0, 0.0),
+                                26.0, 0.0, 0.0, 0.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(12.0),
                               child: Image.network(
-                                'https://images.unsplash.com/photo-1491933382434-500287f9b54b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwyMHx8VGVjaHxlbnwwfHx8fDE3MjI5Nzg4MzR8MA&ixlib=rb-4.0.3&q=80&w=1080',
-                                width: 120.0,
-                                height: 120.0,
+                                'https://images.unsplash.com/photo-1627389955805-5bf2447e9a75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNnx8U3BoZXJlfGVufDB8fHx8MTcyMjk5MDA0Mnww&ixlib=rb-4.0.3&q=80&w=1080',
+                                width: 100.0,
+                                height: 100.0,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -267,17 +270,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 0.0, 12.0),
+                                  12.0, 30.0, 0.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Top 10 Gadgets of 2023',
+                                    'Top 10 Gadgets of 2024',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
                                           fontFamily: 'Inter',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           letterSpacing: 0.0,
                                         ),
                                   ),
@@ -356,8 +362,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                               borderRadius: BorderRadius.circular(12.0),
                               child: Image.network(
                                 'https://images.unsplash.com/photo-1625314887424-9f190599bd56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw5fHxBSXxlbnwwfHx8fDE3MjI5NzkwOTV8MA&ixlib=rb-4.0.3&q=80&w=1080',
-                                width: 80.0,
-                                height: 80.0,
+                                width: 65.0,
+                                height: 65.0,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -368,17 +374,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   12.0, 0.0, 0.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Innovations in Tech',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
@@ -429,8 +427,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                               borderRadius: BorderRadius.circular(12.0),
                               child: Image.network(
                                 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxMXx8VGVjaG5vbG9neXxlbnwwfHx8fDE3MjI5NzkwNTV8MA&ixlib=rb-4.0.3&q=80&w=1080',
-                                width: 80.0,
-                                height: 80.0,
+                                width: 65.0,
+                                height: 65.0,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -441,17 +439,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   12.0, 0.0, 0.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Software Updates',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
