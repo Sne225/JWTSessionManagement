@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/components/toast/toast_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -65,7 +67,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       children: [
                         Container(
                           width: double.infinity,
-                          height: 140.0,
+                          height: 130.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -99,7 +101,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 24.0),
                                   child: Text(
-                                    'Let\'s get started by filling out the form below.',
+                                    'Enter your details below to login into your accpunt',
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
@@ -304,54 +306,166 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 16.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      var shouldSetState = false;
-                                      _model.formOutput = true;
-                                      if (_model.formKey.currentState == null ||
-                                          !_model.formKey.currentState!
-                                              .validate()) {
-                                        setState(
-                                            () => _model.formOutput = false);
-                                        return;
-                                      }
-                                      shouldSetState = true;
-                                      if (_model.formOutput!) {
-                                        context.pushNamed('OTP');
-                                      } else {
-                                        if (shouldSetState) setState(() {});
-                                        return;
-                                      }
+                                Builder(
+                                  builder: (context) => Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 16.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        var shouldSetState = false;
+                                        _model.formOutput = true;
+                                        if (_model.formKey.currentState ==
+                                                null ||
+                                            !_model.formKey.currentState!
+                                                .validate()) {
+                                          setState(
+                                              () => _model.formOutput = false);
+                                          return;
+                                        }
+                                        shouldSetState = true;
+                                        if (_model.formOutput!) {
+                                          // API call for contacting server to verify email for OTP request
+                                          _model.otpResponse =
+                                              await VerifyCall.call(
+                                            email: _model
+                                                .emailAddressTextController
+                                                .text,
+                                            password: _model
+                                                .passwordTextController.text,
+                                          );
 
-                                      if (shouldSetState) setState(() {});
-                                    },
-                                    text: 'Sign In',
-                                    options: FFButtonOptions(
-                                      width: 370.0,
-                                      height: 44.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Inter',
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                          shouldSetState = true;
+                                          if ((_model.otpResponse?.succeeded ??
+                                              true)) {
+                                            showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () => FocusScope.of(
+                                                            dialogContext)
+                                                        .unfocus(),
+                                                    child: ToastWidget(
+                                                      title: 'Logged',
+                                                      desc:
+                                                          'You have been logged in successfully!',
+                                                      colour:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .success,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+
+                                            await Future.delayed(const Duration(
+                                                milliseconds: 3000));
+                                            Navigator.pop(context);
+                                            await Future.delayed(const Duration(
+                                                milliseconds: 300));
+
+                                            context.pushNamed(
+                                              'OTP',
+                                              queryParameters: {
+                                                'email': serializeParam(
+                                                  _model
+                                                      .emailAddressTextController
+                                                      .text,
+                                                  ParamType.String,
+                                                ),
+                                                'password': serializeParam(
+                                                  _model.passwordTextController
+                                                      .text,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          } else {
+                                            showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () => FocusScope.of(
+                                                            dialogContext)
+                                                        .unfocus(),
+                                                    child: ToastWidget(
+                                                      title:
+                                                          'Incorrect email or password',
+                                                      desc:
+                                                          'The email or password you have entered is incorrect. Please try again.',
+                                                      colour:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+
+                                            await Future.delayed(const Duration(
+                                                milliseconds: 3500));
+                                            Navigator.pop(context);
+                                            if (shouldSetState) {
+                                              setState(() {});
+                                            }
+                                            return;
+                                          }
+                                        } else {
+                                          if (shouldSetState) setState(() {});
+                                          return;
+                                        }
+
+                                        if (shouldSetState) setState(() {});
+                                      },
+                                      text: 'Sign In',
+                                      options: FFButtonOptions(
+                                        width: 370.0,
+                                        height: 44.0,
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            const EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: const BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(12.0),
                                     ),
                                   ),
                                 ),
