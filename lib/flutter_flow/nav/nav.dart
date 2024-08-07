@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -29,22 +30,40 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => const HomePageWidget(),
+      errorBuilder: (context, state) => const LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const HomePageWidget(),
-        ),
-        FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          builder: (context, _) => const LoginWidget(),
         ),
         FFRoute(
           name: 'Login',
           path: '/login',
           builder: (context, params) => const LoginWidget(),
+        ),
+        FFRoute(
+          name: 'Register',
+          path: '/register',
+          builder: (context, params) => const RegisterWidget(),
+        ),
+        FFRoute(
+          name: 'OTP',
+          path: '/otp',
+          builder: (context, params) => const OtpWidget(),
+        ),
+        FFRoute(
+          name: 'Home',
+          path: '/home',
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'Home') : const HomeWidget(),
+        ),
+        FFRoute(
+          name: 'Profile',
+          path: '/profile',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Profile')
+              : const ProfileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
