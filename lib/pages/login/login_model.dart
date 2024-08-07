@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'login_widget.dart' show LoginWidget;
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Email is invalid. Try again.';
+      return 'Email is invalid. Please try again.';
     }
     return null;
   }
@@ -29,11 +30,11 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   String? _passwordTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Field is required.';
     }
 
     if (val.length < 5) {
-      return 'Password is too short. Try again.';
+      return 'Password is too short. Please try again.';
     }
 
     return null;
@@ -41,6 +42,8 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
   // Stores action output result for [Validate Form] action in Button widget.
   bool? formOutput;
+  // Stores action output result for [Backend Call - API (verify)] action in Button widget.
+  ApiCallResponse? otpResponse;
 
   @override
   void initState(BuildContext context) {

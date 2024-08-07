@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'register_widget.dart' show RegisterWidget;
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
     }
 
     if (!RegExp(kTextValidatorUsernameRegex).hasMatch(val)) {
-      return 'Must start with a letter and can only contain letters, digits and - or _.';
+      return 'Invalid username. Please try again.';
     }
     return null;
   }
@@ -36,7 +37,7 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Email is invalid. Try again.';
+      return 'Email is invalid. Please try again.';
     }
     return null;
   }
@@ -48,11 +49,11 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   String? _passwordTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Password is required';
+      return 'Password is required.';
     }
 
     if (val.length < 5) {
-      return 'Password is too short. Try again.';
+      return 'Password is too short. Please try again.';
     }
 
     return null;
@@ -60,6 +61,8 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
 
   // Stores action output result for [Validate Form] action in Button widget.
   bool? formOutput;
+  // Stores action output result for [Backend Call - API (register)] action in Button widget.
+  ApiCallResponse? authResponse;
 
   @override
   void initState(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -35,6 +36,11 @@ class RegisterCall {
       alwaysAllowBody: false,
     );
   }
+
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
 }
 
 class VerifyCall {
@@ -63,6 +69,11 @@ class VerifyCall {
       alwaysAllowBody: false,
     );
   }
+
+  static bool? success(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.success''',
+      ));
 }
 
 class LoginCall {
@@ -93,6 +104,16 @@ class LoginCall {
       alwaysAllowBody: false,
     );
   }
+
+  static String? jwt(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.accessToken''',
+      ));
+  static String? messageOtp(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
 }
 
 class ApiPagingParams {
