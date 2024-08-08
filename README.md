@@ -39,7 +39,7 @@ This project is a demonstration of how to implement a secure JWT (JSON Web Token
     - Open Flutterflow and import the project.
 
 3. **Set up the API Endpoints**:
-    - Add the provided API endpoints in the `API Calls` section of Flutterflow.
+    - Add the provided API endpoints in the `API Calls` section of Flutterflow.(APIs ommited)
 
 4. **Configure Secure Storage**:
     - Ensure that the secure storage actions are correctly set up for storing and retrieving JWT tokens.
