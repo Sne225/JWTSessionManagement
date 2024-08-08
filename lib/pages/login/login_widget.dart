@@ -30,6 +30,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -67,7 +69,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       children: [
                         Container(
                           width: double.infinity,
-                          height: 130.0,
+                          height: 160.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -209,7 +211,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             controller:
                                                 _model.passwordTextController,
                                             focusNode: _model.passwordFocusNode,
-                                            autofocus: true,
+                                            autofocus: false,
                                             autofillHints: const [
                                               AutofillHints.password
                                             ],
@@ -313,6 +315,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         var shouldSetState = false;
+                                        // Validating fields
                                         _model.formOutput = true;
                                         if (_model.formKey.currentState ==
                                                 null ||
@@ -374,6 +377,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             Navigator.pop(context);
                                             await Future.delayed(const Duration(
                                                 milliseconds: 300));
+                                            // Navigating to the home page
 
                                             context.pushNamed(
                                               'OTP',
