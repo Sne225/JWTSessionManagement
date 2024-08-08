@@ -31,8 +31,8 @@ This project is a demonstration of how to implement a secure JWT (JSON Web Token
 ## Installation
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/flutterflow-jwt-session-management.git
-    cd flutterflow-jwt-session-management
+    git clone https://github.com/Sne225/JWTSessionManagement/.git
+    cd JWTSessionManagement
     ```
 
 2. **Open the project in Flutterflow**:
