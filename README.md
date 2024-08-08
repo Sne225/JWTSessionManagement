@@ -6,12 +6,11 @@
 3. [Technologies Used](#technologies-used)
 4. [Installation](#installation)
 5. [Usage](#usage)
-6. [API Endpoints](#api-endpoints)
-7. [Project Structure](#project-structure)
-8. [State Management](#state-management)
+6. [Project Structure](#project-structure)
+7. [State Management](#state-management)
 
 ## Introduction
-This project is a demonstration of how to implement a secure JWT (JSON Web Token) session management system using Flutterflow. The application includes a user registration system, login functionality, OTP (One-Time Password) verification, and secure session handling.
+This project is a demonstration of how to implement a secure JWT (JSON Web Token) session management system using Flutterflow. The application includes a user registration system, login functionality, OTP (One-Time Password) verification, and secure session handling. You access the `live application` [here](https://preview.flutterflow.app/havas-project-zsjxzu/siasZ6CJJtK8URTWvoHm).
 
 ## Features
 - User Registration
