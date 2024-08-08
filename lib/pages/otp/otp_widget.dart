@@ -37,6 +37,8 @@ class _OtpWidgetState extends State<OtpWidget> {
 
     _model.otpPinTextController ??= TextEditingController();
     _model.otpPinFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -142,7 +144,7 @@ class _OtpWidgetState extends State<OtpWidget> {
                   ),
                 ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 0.0, 0.0),
                 child: Text(
                   'Confirm Account',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -154,7 +156,7 @@ class _OtpWidgetState extends State<OtpWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 6.0, 16.0, 6.0),
                 child: Text(
                   'We have sent you an email with an One-Time-Pin to confirm your account. Please enter the OTP associated with your account below.',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -259,6 +261,7 @@ class _OtpWidgetState extends State<OtpWidget> {
                     child: FFButtonWidget(
                       onPressed: () async {
                         var shouldSetState = false;
+                        // Validating fields
                         _model.formOutputOtp = true;
                         if (_model.formKey.currentState == null ||
                             !_model.formKey.currentState!.validate()) {
@@ -267,6 +270,7 @@ class _OtpWidgetState extends State<OtpWidget> {
                         }
                         shouldSetState = true;
                         if (_model.formOutputOtp!) {
+                          // Doing a backend call for the API for login endpoint
                           _model.otpResponse = await LoginCall.call(
                             email: widget.email,
                             password: widget.password,
@@ -275,11 +279,15 @@ class _OtpWidgetState extends State<OtpWidget> {
 
                           shouldSetState = true;
                           if ((_model.otpResponse?.succeeded ?? true)) {
+                            // On success, perform login sequence using accessToken received from server
                             GoRouter.of(context).prepareAuthEvent();
                             await authManager.signIn(
                               authenticationToken: LoginCall.jwt(
                                 (_model.otpResponse?.jsonBody ?? ''),
                               ),
+                              refreshToken: currentAuthRefreshToken,
+                              tokenExpiration: currentAuthTokenExpiration,
+                              authUid: currentUserUid,
                             );
                             showDialog(
                               context: context,
@@ -302,6 +310,7 @@ class _OtpWidgetState extends State<OtpWidget> {
 
                             await Future.delayed(
                                 const Duration(milliseconds: 3000));
+                            // Navigating home
                             if (Navigator.of(context).canPop()) {
                               context.pop();
                             }

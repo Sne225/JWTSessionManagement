@@ -73,6 +73,8 @@ class _ToastWidgetState extends State<ToastWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -84,8 +86,10 @@ class _ToastWidgetState extends State<ToastWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: const AlignmentDirectional(0.0, -0.25),
+    return
+        // Component for reusability of all toasts and feedback to user
+        Align(
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Container(
         width: 340.0,
         height: 100.0,

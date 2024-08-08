@@ -33,6 +33,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
     _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -92,7 +94,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Join Us',
+                                  'Create Account',
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
@@ -130,7 +132,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                             focusNode: _model.userNameFocusNode,
                                             autofocus: true,
                                             autofillHints: const [
-                                              AutofillHints.email
+                                              AutofillHints.username
                                             ],
                                             obscureText: false,
                                             decoration: InputDecoration(
@@ -194,8 +196,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                   fontFamily: 'Inter',
                                                   letterSpacing: 0.0,
                                                 ),
-                                            keyboardType:
-                                                TextInputType.emailAddress,
+                                            keyboardType: TextInputType.name,
                                             validator: _model
                                                 .userNameTextControllerValidator
                                                 .asValidator(context),
@@ -212,7 +213,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                                 .emailAddressTextController,
                                             focusNode:
                                                 _model.emailAddressFocusNode,
-                                            autofocus: true,
+                                            autofocus: false,
                                             autofillHints: const [
                                               AutofillHints.email
                                             ],
@@ -399,6 +400,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         var shouldSetState = false;
+                                        // Validate form
                                         _model.formOutput = true;
                                         if (_model.formKey.currentState ==
                                                 null ||
@@ -410,6 +412,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                         }
                                         shouldSetState = true;
                                         if (_model.formOutput!) {
+                                          // Make backend call for register api endpoint to register account
                                           _model.authResponse =
                                               await RegisterCall.call(
                                             email: _model
@@ -462,6 +465,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                             Navigator.pop(context);
                                             await Future.delayed(const Duration(
                                                 milliseconds: 300));
+                                            // Navigate home
 
                                             context.pushNamed('Login');
 
