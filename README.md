@@ -31,7 +31,7 @@ This project is a demonstration of how to implement a secure JWT (JSON Web Token
 ## Installation
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/Sne225/JWTSessionManagement/.git
+    git clone https://github.com/Sne225/JWTSessionManagement.git
     cd JWTSessionManagement
     ```
 
