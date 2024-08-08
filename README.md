@@ -1,4 +1,4 @@
-# Flutterflow JWT Session Management
+# JWT Session Management
 
 ## Table of Contents
 1. [Introduction](#introduction)
