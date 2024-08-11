@@ -56,7 +56,7 @@ This project is a demonstration of how to implement a secure JWT (JSON Web Token
     - Upon successful login, you will be redirected to the OTP page.
 
 3. **OTP Verification**:
-    - Enter the OTP sent to your registered email or phone number.
+    - Enter the OTP sent to your registered email.
     - Click the `Submit OTP` button to verify the OTP and receive the JWT token.
 
 4. **Session Management**:
