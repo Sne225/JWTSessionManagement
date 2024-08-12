@@ -22,6 +22,9 @@ This project is a demonstration of how to implement a secure JWT (JSON Web Token
 - Responsive Design for Mobile and Desktop
 - Performance Optimizations
 
+![JWT UI Application](https://github.com/user-attachments/assets/486f4b7b-cdc1-4f10-ba1c-05b78909d467)
+
+
 ## Technologies Used
 - **Flutterflow**: Visual application builder for Flutter.
 - **Flutter**: UI toolkit for building natively compiled applications.
