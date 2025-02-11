@@ -31,22 +31,6 @@ This project is a demonstration of how to implement a secure JWT (JSON Web Token
 - **JWT**: JSON Web Tokens for secure authentication.
 - **Secure Storage**: Securely store sensitive data on the device.
 
-## Installation
-1. **Clone the repository**:
-    ```sh
-    git clone https://github.com/Sne225/JWTSessionManagement.git
-    cd JWTSessionManagement
-    ```
-
-2. **Open the project in Flutterflow**:
-    - Open Flutterflow and import the project.
-
-3. **Set up the API Endpoints**:
-    - Add the provided API endpoints in the `API Calls` section of Flutterflow.(APIs ommited)
-
-4. **Configure Secure Storage**:
-    - Ensure that the secure storage actions are correctly set up for storing and retrieving JWT tokens.
-
 ## Usage
 1. **Register a New User**:
     - Navigate to the Registration page and fill in the required fields (username, email, password).
